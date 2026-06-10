@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>HubSpot Settings</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 14px;
+      max-width: 520px;
+      margin: 32px auto;
+      padding: 0 16px;
+      color: #2d3e50;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    header svg { flex-shrink: 0; }
+    h1 { font-size: 20px; font-weight: 700; color: #ff7a59; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; }
+    .hint {
+      font-size: 12px;
+      color: #7c98b6;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .hint a { color: #ff7a59; }
+    .input-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    input[type="password"],
+    input[type="text"] {
+      flex: 1;
+      padding: 8px 10px;
+      border: 1px solid #dfe3eb;
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: monospace;
+      color: #2d3e50;
+    }
+    input:focus { outline: 2px solid #ff7a59; border-color: transparent; }
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    #save-btn   { background: #ff7a59; color: white; }
+    #save-btn:hover { background: #e8674a; }
+    #toggle-visibility { background: #f5f8fa; color: #2d3e50; border: 1px solid #dfe3eb; }
+    .secondary-actions { display: flex; gap: 8px; margin-top: 4px; }
+    #test-btn   { background: #f5f8fa; color: #2d3e50; border: 1px solid #dfe3eb; }
+    #test-btn:hover   { background: #eaf0f6; }
+    #test-btn:disabled { opacity: 0.6; cursor: default; }
+    #remove-btn { background: #fff; color: #c0392b; border: 1px solid #e8d0ce; }
+    #remove-btn:hover { background: #fdf2f2; }
+    #status { margin-top: 14px; font-size: 13px; min-height: 20px; font-weight: 600; }
+    #status.success { color: #00a4bd; }
+    #status.error   { color: #c0392b; }
+  </style>
+</head>
+<body>
+  <header>
+    <svg width="28" height="28" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="16" cy="16" r="16" fill="#FF7A59"/>
+      <text x="16" y="21" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white" text-anchor="middle">HS</text>
+    </svg>
+    <h1>HubSpot Settings</h1>
+  </header>
+
+  <form id="settings-form">
+    <label for="access-key">Personal Access Key</label>
+    <p class="hint">
+      Generate a Private App token in
+      <a href="https://app.hubspot.com/private-apps" target="_blank" rel="noopener">HubSpot → Settings → Private Apps</a>.
+      Required scopes: <code>crm.objects.contacts.read</code>, <code>crm.objects.deals.read</code>.
+    </p>
+    <div class="input-row">
+      <input id="access-key" type="password" placeholder="pat-na1-xxxxxxxx-…" autocomplete="off" spellcheck="false" />
+      <button type="button" id="toggle-visibility">Show</button>
+      <button type="submit" id="save-btn">Save</button>
+    </div>
+    <div class="secondary-actions">
+      <button type="button" id="test-btn">Test Connection</button>
+      <button type="button" id="remove-btn">Remove Key</button>
+    </div>
+  </form>
+
+  <p id="status"></p>
+
+  <script src="index.js"></script>
+</body>
+</html>

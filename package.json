@@ -1,0 +1,30 @@
+{
+  "name": "thunderbird-hubspot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/build.js --watch",
+    "dev:ext": "web-ext run --source-dir dist --target thunderbird-desktop",
+    "build": "tsc --noEmit && node scripts/build.js && web-ext build --source-dir dist",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@vitest/eslint-plugin": "^1.1.0",
+    "esbuild": "^0.23.0",
+    "jsdom": "^25.0.0",
+    "@types/firefox-webext-browser": "^120.0.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "eslint": "^9.9.0",
+    "msw": "^2.4.0",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.3.0",
+    "vitest": "^2.1.0",
+    "web-ext": "^8.3.0"
+  }
+}
